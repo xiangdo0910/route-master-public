@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102d4c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="航路マスター"><meta name="description" content="公開情報だけで学ぶ、日本のフェリー・RORO船の航路クイズと地図。"><title>航路マスター｜公開情報版</title>
+<style>
+:root{color-scheme:light;--ink:#112b43;--sub:#63778b;--navy:#102d4c;--blue:#1674ad;--light:#f2f7fc;--line:#d9e5ef;--good:#176b50;--bad:#a43c3c}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#edf3f8;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;font-size:15px;line-height:1.55}button,select,input{font:inherit}button{cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible{outline:3px solid #f0b44c;outline-offset:2px}button:disabled{cursor:default;opacity:.7}a{color:#115d9b}#app{max-width:690px;min-height:100dvh;margin:0 auto;background:#fff;padding-bottom:calc(88px + env(safe-area-inset-bottom));box-shadow:0 0 30px #15395812}header{background:linear-gradient(150deg,#102d4c,#155582);color:white;padding:calc(19px + env(safe-area-inset-top)) 20px 22px;border-radius:0 0 24px 24px}header h1{font-size:29px;letter-spacing:.03em;margin:4px 0 3px}header p{margin:0;color:#d4e7f6;font-size:13px}.ribbon{font-weight:700;font-size:11px;letter-spacing:.1em;color:#a8eddd}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:16px}.stats div{background:#ffffff1c;border:1px solid #ffffff25;border-radius:12px;padding:9px;text-align:center}.stats strong{display:block;font-size:22px}.stats span{display:block;font-size:11px;color:#d6e9f5}main{padding:17px 16px 0}h2{font-size:21px;margin:4px 0 14px}h3{font-size:16px;margin:0 0 6px}.muted{color:var(--sub);font-size:13px}.tiny{font-size:11px;color:var(--sub)}.panel{border:1px solid var(--line);border-radius:16px;background:#fff;padding:16px;margin-bottom:12px;box-shadow:0 2px 12px #16345307}.panel.soft{background:var(--light);border-color:transparent}.panel.dark{background:var(--navy);color:white}.panel p{margin:4px 0}.clickable{width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:12px}.chev{color:var(--blue);font-size:24px;font-weight:300}.primary,.secondary,.ghost{border-radius:12px;min-height:46px;padding:10px 13px;font-weight:700;border:1px solid transparent;display:inline-flex;justify-content:center;align-items:center;gap:6px}.primary{background:var(--blue);color:white}.secondary{background:white;border-color:#b9cddd;color:var(--ink)}.ghost{background:transparent;color:var(--blue)}.wide{width:100%}.stack{display:grid;gap:10px}.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}.controls{display:grid;gap:9px;margin-bottom:14px}.controls label{display:grid;gap:4px;font-size:13px;font-weight:700}select,input{width:100%;min-width:0;border:1px solid #b9cddd;border-radius:11px;padding:11px;background:#fff;color:var(--ink)}.badge{font-size:11px;font-weight:800;color:#0c627c;background:#dbf4f6;padding:3px 8px;border-radius:50px;display:inline-block}.pill{font-size:12px;background:#f0f5f9;border-radius:30px;padding:6px 10px;display:inline-block}.progress{width:100%;background:#e5edf5;height:7px;border-radius:9px;overflow:hidden;margin:13px 0}.progress i{display:block;height:100%;background:#21a5c9;transition:width .25s}.answer{width:100%;border:1.5px solid var(--line);background:white;border-radius:13px;min-height:55px;text-align:left;padding:12px 14px;color:var(--ink);font-weight:600}.answer.good{background:#e5f7ef;border-color:#1b865e;color:var(--good)}.answer.bad{background:#fff0ef;border-color:#c35c54;color:var(--bad)}.answer.dim{opacity:.57}.answer:disabled{opacity:1}.answer.dim:disabled{opacity:.6}.explain{background:#eaf6f0;border-radius:13px;padding:14px;margin-top:12px}.explain.bad{background:#fff4ec}.source{font-size:12px;overflow-wrap:anywhere}.source a{display:inline-block;margin-top:4px}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px}.mapwrap{background:linear-gradient(#dceffa,#ebf7ff);border-radius:17px;border:1px solid #c3dfed;position:relative;overflow:hidden;aspect-ratio:560/740}.mapwrap svg{width:100%;height:100%;display:block}.map-pin{position:absolute;transform:translate(-50%,-50%);border:2px solid white;box-shadow:0 2px 6px #092d4055;background:#1b7cb0;color:white;border-radius:24px;width:27px;height:27px;padding:0;font-size:13px;display:flex;align-items:center;justify-content:center;z-index:1}.map-pin:after{content:attr(data-label);position:absolute;top:25px;left:50%;transform:translateX(-50%);font-size:10px;color:#122f44;text-shadow:0 1px #fff,0 -1px #fff,1px 0 #fff,-1px 0 #fff;white-space:nowrap;font-weight:800;pointer-events:none}.map-pin.chosen{background:#ee8a27;z-index:3;width:34px;height:34px;border:3px solid #fff}.map-pin.near{background:#289a7f}.pin-help{margin:8px 0 5px}.listing{display:grid;gap:7px;margin:12px 0}.route{border:1px solid var(--line);border-radius:11px;padding:11px 12px}.route strong{display:block;font-size:13px}.route span{font-size:13px;color:var(--sub)}.company-tag{display:inline-block;font-size:11px;border-radius:20px;padding:2px 8px;background:#ebf5fd;color:#16648e;margin-bottom:5px}.tabs{position:fixed;z-index:10;bottom:0;left:50%;transform:translateX(-50%);max-width:690px;width:100%;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 22px #092e4016;padding:8px 5px calc(8px + env(safe-area-inset-bottom))}.tabs button{border:0;background:none;color:#66798a;font-size:11px;font-weight:700;border-radius:10px;min-height:51px}.tabs button.active{color:var(--blue);background:#ecf6fc}.tabs button span{display:block;font-size:20px;line-height:1.3}.notice{font-size:12px;color:#576d81;padding:12px;border-left:3px solid #94bdd4;background:#f5f9fc;border-radius:5px;margin:12px 0}.divider{height:1px;background:var(--line);margin:14px 0}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.detailgrid>div{background:var(--light);padding:12px;border-radius:12px;text-align:center}.detailgrid strong{display:block;font-size:21px}.detailgrid span{font-size:12px;color:var(--sub)}.sourceitem{padding:11px 0;border-bottom:1px solid var(--line)}.sourceitem strong{display:block}.src-list a{overflow-wrap:anywhere}footer{font-size:11px;color:#718294;margin-top:15px;text-align:center}@media(max-width:360px){main{padding:13px 11px}header{padding-left:14px;padding-right:14px}.map-pin:after{font-size:9px}}
+</style></head><body><div id="app"><header><div class="ribbon">PUBLIC ROUTE EDITION · 2026.09</div><h1>🚢 航路マスター</h1><p>公式サイトの公開航路だけで学ぶ、日本の海上輸送</p><div class="stats"><div><strong id="stat-questions">—</strong><span>練習問題</span></div><div><strong id="stat-companies">—</strong><span>船会社</span></div><div><strong id="stat-ports">—</strong><span>港・地点</span></div></div></header><main id="main" aria-live="polite"></main><nav class="tabs" aria-label="メニュー"><button type="button" data-tab="home"><span>⌂</span>ホーム</button><button type="button" data-tab="quiz"><span>☑</span>クイズ</button><button type="button" data-tab="map"><span>⌖</span>地図</button><button type="button" data-tab="routes"><span>≡</span>航路帳</button></nav></div>
+<script>
+'use strict';
+/* Sources are publicly accessible operator or municipal websites; no internal rates or files. */
+const SOURCES={
+kur:{name:'栗林商船／釧路市',url:'https://www.city.kushiro.lg.jp/sangyou/umisora/1006541/1006559/1006561.html'},
+han:{name:'阪九フェリー公式',url:'https://www.han9f.co.jp/'},
+mei:{name:'名門大洋フェリー公式',url:'https://www.cityline.co.jp/route'},
+oce:{name:'オーシャン東九フェリー公式',url:'https://www.otf.jp/schedule/'},
+snf:{name:'新日本海フェリー公式',url:'https://www.snf.jp/guide/time_schedule/'},
+tai:{name:'太平洋フェリー公式',url:'https://www.taiheiyo-ferry.co.jp/koro/'},
+mol:{name:'商船三井さんふらわあ公式',url:'https://www.sunflower.co.jp/corporate/services/'},
+miy:{name:'宮崎カーフェリー公式',url:'https://www.miyazakicarferry.com/schedule/'},
+ora:{name:'オレンジフェリー公式',url:'https://www.orange-ferry.co.jp/'},
+fuji:{name:'フジトランス コーポレーション公式',url:'https://www.fujitrans.co.jp/business/'},
+daio:{name:'大王海運公式',url:'https://daio-kaiun.com/roro.html'}
+};
+// [company, departure, destination, source key, note]. Each record is a verified direction or service segment.
+const ROUTES=[
+['栗林商船','釧路','仙台','kur','釧路市公開のRORO船寄港順に基づく'],
+['栗林商船','仙台','東京','kur','釧路市公開のRORO船寄港順に基づく'],
+['栗林商船','東京','大阪','kur','大阪寄港のRORO船'],
+['栗林商船','大阪','東京','kur','大阪寄港のRORO船'],
+['栗林商船','東京','名古屋','kur','名古屋寄港のRORO船'],
+['栗林商船','名古屋','東京','kur','名古屋寄港のRORO船'],
+['栗林商船','東京','仙台','kur','釧路市公開のRORO船寄港順に基づく'],
+['栗林商船','仙台','苫小牧','kur','釧路市公開のRORO船寄港順に基づく'],
+['栗林商船','苫小牧','釧路','kur','釧路市公開のRORO船寄港順に基づく'],
+['阪九フェリー','泉大津','新門司','han','泉大津航路'],
+['阪九フェリー','新門司','泉大津','han','泉大津航路'],
+['阪九フェリー','神戸','新門司','han','神戸航路'],
+['阪九フェリー','新門司','神戸','han','神戸航路'],
+['名門大洋フェリー','大阪南港','新門司','mei','大阪南港～新門司'],
+['名門大洋フェリー','新門司','大阪南港','mei','大阪南港～新門司'],
+['オーシャントランス','東京（有明）','徳島','oce','オーシャン東九フェリー'],
+['オーシャントランス','徳島','新門司','oce','オーシャン東九フェリー'],
+['オーシャントランス','新門司','徳島','oce','オーシャン東九フェリー'],
+['オーシャントランス','徳島','東京（有明）','oce','オーシャン東九フェリー'],
+['新日本海フェリー','舞鶴','小樽','snf','舞鶴～小樽航路'],
+['新日本海フェリー','小樽','舞鶴','snf','舞鶴～小樽航路'],
+['新日本海フェリー','敦賀','苫小牧東','snf','敦賀～苫小牧東航路'],
+['新日本海フェリー','苫小牧東','敦賀','snf','敦賀～苫小牧東航路'],
+['新日本海フェリー','新潟','小樽','snf','新潟～小樽航路'],
+['新日本海フェリー','小樽','新潟','snf','新潟～小樽航路'],
+['新日本海フェリー','秋田','苫小牧東','snf','秋田～苫小牧東航路'],
+['新日本海フェリー','苫小牧東','秋田','snf','秋田～苫小牧東航路'],
+['新日本海フェリー','敦賀','新潟','snf','経由便の区間。運航日は要確認'],
+['新日本海フェリー','新潟','秋田','snf','経由便の区間。運航日は要確認'],
+['太平洋フェリー','苫小牧','仙台','tai','苫小牧～仙台～名古屋'],
+['太平洋フェリー','仙台','苫小牧','tai','苫小牧～仙台～名古屋'],
+['太平洋フェリー','仙台','名古屋','tai','苫小牧～仙台～名古屋'],
+['太平洋フェリー','名古屋','仙台','tai','苫小牧～仙台～名古屋'],
+['商船三井さんふらわあ','大洗','苫小牧','mol','旅客フェリー'],
+['商船三井さんふらわあ','苫小牧','大洗','mol','旅客フェリー'],
+['商船三井さんふらわあ','大阪','別府','mol','旅客フェリー'],
+['商船三井さんふらわあ','別府','大阪','mol','旅客フェリー'],
+['商船三井さんふらわあ','神戸','大分','mol','旅客フェリー'],
+['商船三井さんふらわあ','大分','神戸','mol','旅客フェリー'],
+['商船三井さんふらわあ','大阪','志布志','mol','旅客フェリー'],
+['商船三井さんふらわあ','志布志','大阪','mol','旅客フェリー'],
+['宮崎カーフェリー','神戸','宮崎','miy','宮崎～神戸航路'],
+['宮崎カーフェリー','宮崎','神戸','miy','宮崎～神戸航路'],
+['オレンジフェリー','大阪','東予','ora','東予～大阪航路'],
+['オレンジフェリー','東予','大阪','ora','東予～大阪航路'],
+['オレンジフェリー','八幡浜','臼杵','ora','八幡浜～臼杵航路'],
+['オレンジフェリー','臼杵','八幡浜','ora','八幡浜～臼杵航路'],
+['フジトランス','名古屋','仙台','fuji','公開国内基本航路'],
+['フジトランス','仙台','苫小牧','fuji','公開国内基本航路'],
+['フジトランス','苫小牧','仙台','fuji','公開国内基本航路'],
+['フジトランス','仙台','名古屋','fuji','公開国内基本航路'],
+['フジトランス','苫小牧','八戸','fuji','公開国内基本航路'],
+['フジトランス','八戸','名古屋','fuji','公開国内基本航路'],
+['フジトランス','名古屋','横浜','fuji','公開国内基本航路'],
+['フジトランス','横浜','川崎','fuji','公開国内基本航路'],
+['フジトランス','川崎','仙台','fuji','公開国内基本航路'],
+['フジトランス','仙台','横浜','fuji','公開国内基本航路'],
+['フジトランス','横浜','田原','fuji','公開国内基本航路'],
+['フジトランス','田原','名古屋','fuji','公開国内基本航路'],
+['フジトランス','名古屋','尼崎','fuji','公開国内基本航路'],
+['フジトランス','尼崎','新門司','fuji','公開国内基本航路'],
+['フジトランス','新門司','田原','fuji','公開国内基本航路'],
+['大王海運','千葉','堺泉北','daio','公開RORO定期航路'],
+['大王海運','千葉','宇野','daio','公開RORO定期航路'],
+['大王海運','千葉','三島川之江','daio','公開RORO定期航路'],
+['大王海運','堺泉北','千葉','daio','公開RORO定期航路'],
+['大王海運','堺泉北','宇野','daio','公開RORO定期航路'],
+['大王海運','堺泉北','三島川之江','daio','公開RORO定期航路'],
+['大王海運','宇野','千葉','daio','公開RORO定期航路'],
+['大王海運','宇野','三島川之江','daio','公開RORO定期航路'],
+['大王海運','三島川之江','千葉','daio','公開RORO定期航路'],
+['大王海運','三島川之江','堺泉北','daio','公開RORO定期航路']
+];
+// Coordinates are approximate terminal areas, intended for learning locations (not precise berths).
+const PORTS={
+'釧路':[144.38,42.98],'苫小牧':[141.61,42.63],'苫小牧東':[141.81,42.61],'小樽':[141.00,43.19],
+'八戸':[141.53,40.53],'秋田':[140.06,39.75],'仙台':[141.0,38.27],'新潟':[139.07,37.94],
+'東京':[139.79,35.62],'東京（有明）':[139.80,35.63],'川崎':[139.78,35.50],'横浜':[139.65,35.45],
+'千葉':[140.08,35.60],'大洗':[140.58,36.31],'名古屋':[136.89,35.08],'田原':[137.28,34.67],
+'新門司':[131.02,33.90],'大阪南港':[135.43,34.62],'大阪':[135.43,34.62],'堺泉北':[135.38,34.51],
+'泉大津':[135.38,34.51],'神戸':[135.19,34.66],'大分':[131.63,33.25],'別府':[131.50,33.31],
+'志布志':[131.10,31.46],'宮崎':[131.46,31.91],'徳島':[134.60,34.07],'東予':[133.06,33.98],
+'八幡浜':[132.43,33.46],'臼杵':[131.80,33.12],'舞鶴':[135.33,35.47],'敦賀':[136.06,35.65],
+'宇野':[133.95,34.49],'三島川之江':[133.55,34.01],'尼崎':[135.40,34.72]
+};
+const JP_PATH='M424.4,315.4 L394.0,362.0 L394.5,409.7 L382.1,446.6 L387.9,469.8 L370.7,502.4 L328.6,524.1 L270.7,527.0 L223.8,579.8 L201.6,562.0 L200.3,527.4 L143.0,537.6 L104.0,559.4 L65.4,560.3 L98.8,594.3 L76.8,672.9 L55.5,692.4 L39.6,674.4 L47.7,632.7 L26.8,619.3 L13.5,587.6 L44.6,573.3 L61.9,544.2 L95.0,520.3 L119.2,488.7 L184.7,474.9 L220.0,484.4 L254.4,402.1 L276.4,424.2 L343.5,360.0 L364.2,303.5 L358.5,251.4 L372.4,222.2 L407.4,213.7 L425.4,277.9 L424.4,315.4 Z M514.3,94.3 L537.6,74.7 L545.0,126.6 L496.1,139.3 L467.2,185.2 L415.4,153.6 L397.5,204.2 L360.9,204.9 L356.3,158.9 L372.6,123.3 L407.8,120.8 L417.4,56.8 L427.2,20.7 L465.9,68.9 L514.3,94.3 Z M111.1,579.8 L129.3,552.2 L148.0,557.6 L161.5,538.1 L185.7,548.1 L190.0,564.0 L171.4,591.9 L157.9,577.1 L141.0,587.9 L132.3,614.9 L110.8,601.7 L111.1,579.8 Z';
+const $=id=>document.getElementById(id), companyList=[...new Set(ROUTES.map(r=>r[0]))],portList=[...new Set(ROUTES.flatMap(r=>[r[1],r[2]]))];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const srcLink=key=>`<a target="_blank" rel="noopener noreferrer" href="${SOURCES[key].url}">${esc(SOURCES[key].name)} ↗</a>`;
+const label=(i)=>'ABCD'[i];
+const unique=a=>[...new Set(a)];
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a};
+const randWrong=(pool,correct)=>shuffle(unique(pool.filter(x=>x!==correct))).slice(0,3);
+const byCompany=c=>ROUTES.filter(r=>r[0]===c);
+function buildQuestions(){const out=[];const seen=new Set();const add=q=>{const k=q.prompt+'|'+q.answer;if(seen.has(k))return;seen.add(k);out.push({...q,id:out.length});};
+// Different task types create a large bank without inventing unverified routes.
+ROUTES.forEach((r,idx)=>{
+ const [c,from,to,key,note]=r;
+ const wrongRoutes=unique(ROUTES.filter(x=>x[0]!==c&& !ROUTES.some(s=>s[0]===c&&s[1]===x[1]&&s[2]===x[2])).map(x=>`${x[1]} → ${x[2]}`));
+ add({company:c,prompt:`${c}の公開航路に含まれる発着地の組み合わせは？`,answer:`${from} → ${to}`,wrong:randWrong(wrongRoutes,`${from} → ${to}`),explain:`${c}：${from} → ${to}。${note}`,source:key,ports:[from,to],type:'route'});
+ const matching=unique(ROUTES.filter(x=>x[1]===from&&x[2]===to).map(x=>x[0]));
+ if(matching.length===1)add({company:c,prompt:`「${from} → ${to}」を公開航路に掲載している船会社は？`,answer:c,wrong:randWrong(companyList,c),explain:`${c}の公式情報に「${from} → ${to}」が掲載されているで。`,source:key,ports:[from,to],type:'company'});
+ const destinations=unique(byCompany(c).filter(x=>x[1]===from).map(x=>x[2]));
+ if(destinations.length===1){const other=unique(portList.filter(p=>p!==from&&!destinations.includes(p)));add({company:c,prompt:`${c}の「${from}」発。公開されている行先は？`,answer:to,wrong:randWrong(other,to),explain:`${c}：${from} → ${to}。${note}`,source:key,ports:[from,to],type:'destination'});}
+ });
+ // A factual geography question for each publicly sourced terminal.
+ for(const port of portList){const c=PORTS[port];if(!c)continue;const area=c[1]>=40?'北海道・東北':c[1]>=35?'関東・中部・北陸':c[1]>=33?'関西・中国・四国・北九州':'南九州';const rr=ROUTES.find(r=>r[1]===port||r[2]===port);add({company:rr[0],prompt:`「${port}」の位置は日本のどのエリア？`,answer:area,wrong:['北海道・東北','関東・中部・北陸','関西・中国・四国・北九州','南九州'].filter(a=>a!==area),explain:`${port}の位置を地図で確認しよう。`,source:rr[3],ports:[port],type:'geography'});}
+ return out.filter(q=>q.wrong.length>=3).map(q=>({...q,choices:shuffle([q.answer,...q.wrong.slice(0,3)])}));}
+const QUESTIONS=buildQuestions();
+const STORAGE_KEY='route-master-public-v1';let saved={attempts:[],wrong:[]};try{const v=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(v&&Array.isArray(v.attempts)&&Array.isArray(v.wrong))saved=v}catch(e){};
+function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(saved))}catch(e){}}
+const state={tab:'home',quizCompany:'all',quizCount:'10',quizType:'all',quizItems:[],qIndex:0,selected:null,runCorrect:0,selectedPort:'釧路',mapCompany:'all',routeCompany:'all',search:''};
+const main=$('main');
+function updateTabs(){document.querySelectorAll('[data-tab]').forEach(b=>{b.classList.toggle('active',b.dataset.tab===state.tab||state.tab==='setup'&&b.dataset.tab==='quiz');b.setAttribute('aria-current',b.classList.contains('active')?'page':'false')});}
+function render(){updateTabs();$('stat-questions').textContent=QUESTIONS.length;$('stat-companies').textContent=companyList.length;$('stat-ports').textContent=portList.length;
+ if(state.tab==='home')return home();if(state.tab==='setup')return setup();if(state.tab==='quiz')return quiz();if(state.tab==='map')return map();if(state.tab==='routes')return routes();}
+function go(tab){state.tab=tab;if(tab==='quiz'&&!state.quizItems.length)state.tab='setup';render();window.scrollTo(0,0);}
+const option=(value,text,current)=>`<option value="${esc(value)}" ${value===current?'selected':''}>${esc(text)}</option>`;
+function home(){main.innerHTML=`<h2>どこから始める？</h2><button class="panel clickable" data-action="setup"><div><h3>🧠 4択クイズ</h3><p class="muted">${QUESTIONS.length}問から出題。会社別の特訓や復習も。</p></div><span class="chev">›</span></button><button class="panel clickable" data-action="map"><div><h3>🗾 日本地図モード</h3><p class="muted">港の位置をタップして、発着地と船会社を確認。</p></div><span class="chev">›</span></button><button class="panel clickable" data-action="routes"><div><h3>📖 航路暗記帳</h3><p class="muted">公式情報の航路を会社や港から検索。</p></div><span class="chev">›</span></button><section class="panel soft"><div class="topline"><h3>学習の記録</h3><span class="badge">端末内に保存</span></div><div class="detailgrid"><div><strong>${saved.attempts.length}</strong><span>回答数</span></div><div><strong>${saved.wrong.length}</strong><span>要復習</span></div></div>${saved.wrong.length?'<button class="primary wide" style="margin-top:10px" data-action="review">間違えた問題を復習する</button>':''}</section><div class="notice">このアプリは各社の公開航路を使った一般向け教材。運賃・取引条件・社内資料は含まへんで。運航日の確認や実務判断には使わず、最新の公式情報を確認してな。</div><button class="ghost wide" data-action="sources">公式情報・このアプリについて ↗</button>`;}
+function setup(){let pool=QUESTIONS.filter(q=>(state.quizCompany==='all'||q.company===state.quizCompany)&&(state.quizType==='all'||q.type===state.quizType));main.innerHTML=`<h2>クイズの設定</h2><div class="panel"><div class="controls"><label>船会社<select id="quiz-company">${option('all','すべての船会社',state.quizCompany)}${companyList.map(c=>option(c,c,state.quizCompany)).join('')}</select></label><label>問題の種類<select id="quiz-type">${[['all','全タイプ'],['route','航路を選ぶ'],['company','船会社を当てる'],['destination','行先を当てる'],['geography','港の位置']].map(([v,t])=>option(v,t,state.quizType)).join('')}</select></label><label>問題数<select id="quiz-count">${[['10','10問'],['20','20問'],['30','30問'],['all','対象すべて']].map(([v,t])=>option(v,t,state.quizCount)).join('')}</select></label></div><div class="pill">対象：${pool.length}問</div><button class="primary wide" style="margin-top:13px" data-action="start" ${!pool.length?'disabled':''}>スタート →</button></div><button class="ghost wide" data-action="home">ホームへ戻る</button>`;
+ $('quiz-company').addEventListener('change',e=>{state.quizCompany=e.target.value;setup()});$('quiz-type').addEventListener('change',e=>{state.quizType=e.target.value;setup()});$('quiz-count').addEventListener('change',e=>{state.quizCount=e.target.value;setup()});}
+function start(items){state.quizItems=shuffle(items).slice(0,state.quizCount==='all'?items.length:Number(state.quizCount));state.qIndex=0;state.selected=null;state.runCorrect=0;go('quiz')}
+function quiz(){if(!state.quizItems.length){go('setup');return}if(state.qIndex>=state.quizItems.length)return results();const q=state.quizItems[state.qIndex],answered=state.selected!==null;
+ main.innerHTML=`<div class="topline"><span class="badge">${esc(q.company)}</span><span class="muted">${state.qIndex+1} / ${state.quizItems.length} 問</span></div><div class="progress"><i style="width:${(state.qIndex+1)/state.quizItems.length*100}%"></i></div><h2>${esc(q.prompt)}</h2><div class="stack">${q.choices.map((choice,i)=>`<button type="button" class="answer ${answered?(choice===q.answer?'good':i===state.selected?'bad':'dim'):''}" data-answer="${i}" ${answered?'disabled':''}>${label(i)}. ${esc(choice)} ${answered&&choice===q.answer?'✓':''}</button>`).join('')}</div>${answered?`<div class="explain ${q.choices[state.selected]===q.answer?'':'bad'}"><h3>${q.choices[state.selected]===q.answer?'正解！':'惜しい！'}</h3><p>${esc(q.explain)}</p><div class="source">確認元：${srcLink(q.source)}</div></div><button class="primary wide" style="margin-top:12px" data-action="next">${state.qIndex===state.quizItems.length-1?'結果を見る':'次の問題へ →'}</button>`:''}<button class="ghost wide" style="margin-top:10px" data-action="setup">設定へ戻る</button>`;
+ if(!answered)main.querySelectorAll('[data-answer]').forEach(b=>b.addEventListener('click',()=>{const i=Number(b.dataset.answer);if(state.selected!==null)return;state.selected=i;const good=q.choices[i]===q.answer;if(good)state.runCorrect++;saved.attempts.push({id:q.id,good,at:Date.now()});saved.attempts=saved.attempts.slice(-3000);saved.wrong=saved.wrong.filter(id=>id!==q.id);if(!good)saved.wrong.push(q.id);persist();render()}));}
+function results(){const total=state.quizItems.length;main.innerHTML=`<div class="panel dark" style="text-align:center;padding:23px"><div style="font-size:43px">${state.runCorrect===total?'🏆':'🚢'}</div><h2 style="font-size:28px">${state.runCorrect} / ${total}問正解！</h2><p>正答率 ${Math.round(100*state.runCorrect/total)}%</p></div><div class="panel"><h3>次の一手</h3><p class="muted">間違えた問題は、この端末の復習リストに保存してるで。</p>${saved.wrong.length?'<button class="primary wide" data-action="review">苦手問題を復習</button>':''}<button class="secondary wide" style="margin-top:9px" data-action="setup">条件を変えて再挑戦</button><button class="ghost wide" style="margin-top:7px" data-action="home">ホームへ</button></div>`;}
+function xy(lon,lat){return {x:(lon-129)/17*100,y:(46-lat)/16*100}}
+function map(){const portNames=unique(ROUTES.filter(r=>state.mapCompany==='all'||r[0]===state.mapCompany).flatMap(r=>[r[1],r[2]])).filter(p=>PORTS[p]);if(!portNames.includes(state.selectedPort))state.selectedPort=portNames[0];const chosen=state.selectedPort;const connected=unique(ROUTES.filter(r=>(r[1]===chosen||r[2]===chosen)&&(state.mapCompany==='all'||r[0]===state.mapCompany)).flatMap(r=>[r[1],r[2]]));const related=ROUTES.filter(r=>(r[1]===chosen||r[2]===chosen)&&(state.mapCompany==='all'||r[0]===state.mapCompany));main.innerHTML=`<div class="topline"><h2>日本地図モード</h2><span class="badge">港をタップ</span></div><div class="controls"><label>船会社<select id="map-company">${option('all','すべての船会社',state.mapCompany)}${companyList.map(c=>option(c,c,state.mapCompany)).join('')}</select></label><label>港名から直接選ぶ<select id="map-port">${portNames.map(p=>option(p,p,chosen)).join('')}</select></label></div><div class="mapwrap" role="group" aria-label="日本地図。港の丸いボタンを押して選択してください"><svg aria-hidden="true" viewBox="0 0 560 740" preserveAspectRatio="xMidYMid meet"><path d="${JP_PATH}" fill="#c8d9c9" stroke="#88a99b" stroke-width="2" stroke-linejoin="round"/><text x="390" y="70" font-size="13" fill="#557487">北海道</text><text x="455" y="340" font-size="13" fill="#557487">太平洋</text><text x="44" y="240" font-size="13" fill="#557487">日本海</text></svg>${portNames.map(p=>{const {x,y}=xy(...PORTS[p]);return `<button type="button" class="map-pin ${p===chosen?'chosen':connected.includes(p)?'near':''}" aria-label="${esc(p)}を選ぶ" title="${esc(p)}" data-port="${esc(p)}" data-label="${esc(p)}" style="left:${x.toFixed(3)}%;top:${y.toFixed(3)}%">●</button>`}).join('')}</div><p class="pin-help tiny">港の位置は概略やで。色付きの点が選択中・関連港。航路線は陸地を横断せんように描いてへん。</p><div class="panel soft"><div class="topline"><div><div class="tiny">選択している港</div><h2 style="margin:0">📍 ${esc(chosen)}</h2></div><span class="badge">${related.length}区間</span></div><div class="listing">${related.slice(0,35).map(r=>`<div class="route"><span class="company-tag">${esc(r[0])}</span><strong>${esc(r[1])} → ${esc(r[2])}</strong></div>`).join('')||'<p class="muted">登録されている区間がないで。</p>'}</div><button class="primary wide" data-action="portquiz">この港のクイズに挑戦 →</button></div>`;
+ $('map-company').addEventListener('change',e=>{state.mapCompany=e.target.value;map()});$('map-port').addEventListener('change',e=>{state.selectedPort=e.target.value;map()});main.querySelectorAll('[data-port]').forEach(b=>b.addEventListener('click',()=>{state.selectedPort=b.dataset.port;map()}));}
+function routes(){const rows=ROUTES.filter(r=>(state.routeCompany==='all'||r[0]===state.routeCompany)&&`${r[0]}${r[1]}${r[2]}`.includes(state.search));main.innerHTML=`<h2>航路暗記帳</h2><div class="controls"><label>船会社<select id="route-company">${option('all','すべての船会社',state.routeCompany)}${companyList.map(c=>option(c,c,state.routeCompany)).join('')}</select></label><label>会社名・港名を検索<input id="route-search" placeholder="例：栗林、釧路、新門司" value="${esc(state.search)}" autocomplete="off" spellcheck="false"></label></div><div class="topline"><span class="pill">${rows.length}区間 / 全${ROUTES.length}区間</span><button class="ghost" data-action="clear">検索をリセット</button></div><div class="listing">${rows.map(r=>`<div class="route"><span class="company-tag">${esc(r[0])}</span><strong>${esc(r[1])} → ${esc(r[2])}</strong><span>${esc(r[4])}</span><div class="source">${srcLink(r[3])}</div></div>`).join('')||'<div class="panel">該当する航路が見つからへんかったで。</div>'}</div><button class="ghost wide" data-action="sources">資料・出典を見る ↗</button>`;
+ $('route-company').addEventListener('change',e=>{state.routeCompany=e.target.value;routes()});$('route-search').addEventListener('input',e=>{state.search=e.target.value;const list=main.querySelector('.listing'),filtered=ROUTES.filter(r=>(state.routeCompany==='all'||r[0]===state.routeCompany)&&`${r[0]}${r[1]}${r[2]}`.includes(state.search));main.querySelector('.pill').textContent=`${filtered.length}区間 / 全${ROUTES.length}区間`;list.innerHTML=filtered.map(r=>`<div class="route"><span class="company-tag">${esc(r[0])}</span><strong>${esc(r[1])} → ${esc(r[2])}</strong><span>${esc(r[4])}</span><div class="source">${srcLink(r[3])}</div></div>`).join('')||'<div class="panel">該当する航路が見つからへんかったで。</div>';});}
+function sources(){state.tab='home';updateTabs();main.innerHTML=`<h2>出典と利用上の注意</h2><div class="notice">2026年9月に公開されている運航会社・自治体の情報をもとに、一般的な発着地のみを独自に整理した教材やで。旧アプリに含まれた会社の料金・内部資料・車両条件などは一切収録してへん。</div><div class="panel"><h3>公式サイト・自治体の公開情報</h3><div class="src-list">${Object.entries(SOURCES).map(([k,s])=>`<div class="sourceitem"><strong>${esc(s.name)}</strong><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.url)} ↗</a></div>`).join('')}</div></div><div class="panel soft"><h3>地図について</h3><p class="muted">日本の輪郭：Natural Earth（Public Domain）の地理データを簡略化。港のボタン位置は概略で、寄港順や実際の航行経路を示すものではない。</p><a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noopener noreferrer">Natural Earth 利用条件 ↗</a></div><div class="panel soft"><h3>保存について</h3><p class="muted">学習履歴はブラウザの端末内保存（localStorage）。Safariの履歴・Webサイトデータを消すと消える場合がある。外部への学習履歴送信機能はないで。</p><button class="secondary wide" data-action="reset">学習履歴をリセット</button></div><button class="primary wide" data-action="home">ホームに戻る</button>`;}
+document.addEventListener('click',e=>{const el=e.target.closest('button[data-tab],button[data-action]');if(!el)return;if(el.dataset.tab){go(el.dataset.tab);return}const a=el.dataset.action;if(a==='setup')go('setup');else if(['home','map','routes'].includes(a))go(a);else if(a==='start')start(QUESTIONS.filter(q=>(state.quizCompany==='all'||q.company===state.quizCompany)&&(state.quizType==='all'||q.type===state.quizType)));else if(a==='review'){const q=QUESTIONS.filter(q=>saved.wrong.includes(q.id));if(q.length)start(q);else go('setup')}else if(a==='portquiz'){let q=QUESTIONS.filter(q=>q.ports.includes(state.selectedPort));if(state.mapCompany!=='all')q=q.filter(x=>x.company===state.mapCompany);if(q.length)start(q)}else if(a==='next'){state.qIndex++;state.selected=null;render();window.scrollTo(0,0)}else if(a==='sources')sources();else if(a==='clear'){state.routeCompany='all';state.search='';routes()}else if(a==='reset'){if(confirm('学習履歴をすべて消す？')){saved={attempts:[],wrong:[]};persist();sources()}}});
+render();
+</script><footer>航路マスター公開情報版 · 個人学習用 · 運航状況は各社公式サイトを確認</footer></body></html>
