@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#071322" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>AAマスター | 開催曜日・搬出期限を覚える</title>
+<style>
+:root{color-scheme:dark;--bg:#071322;--panel:#101f30;--panel2:#14273a;--line:#294055;--sub:#91a8b9;--txt:#f2f7fc;--cyan:#50d7d4;--cyan2:#1aa7ab;--amber:#ffcb7a;--red:#ff8190;--green:#8defba;--radius:18px;--shadow:0 24px 60px #020b158a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 65% -25%,#193951 0,transparent 45%),var(--bg);color:var(--txt);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:var(--cyan)}a:hover{text-decoration:none}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.app{display:grid;grid-template-columns:238px minmax(0,1fr);max-width:1480px;margin:auto;min-height:100vh}.side{padding:30px 18px;border-right:1px solid var(--line);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;background:#091827d9}.brand{display:flex;align-items:center;gap:12px;padding:0 9px 30px}.brand-symbol{width:43px;height:43px;display:grid;place-items:center;background:linear-gradient(145deg,#54e9d6,#078cba);border-radius:14px;font-size:21px;font-weight:1000;color:#071a26;box-shadow:0 10px 24px #00b4ae26}.brand-title{font-size:18px;font-weight:900;letter-spacing:.025em;line-height:1.2}.brand-sub{font-size:10px;letter-spacing:.12em;color:var(--sub)}.nav{display:flex;flex-direction:column;gap:8px}.nav button{background:transparent;color:#a9bdcd;border:1px solid transparent;text-align:left;padding:13px 16px;border-radius:13px;display:flex;gap:13px;align-items:center;font-weight:700;transition:.15s}.nav button:hover{background:#172b40}.nav button.active{background:#1b3949;color:#93fff2;border-color:#2b6367}.nav .symbol{width:23px;text-align:center;font-size:19px}.side-note{margin-top:auto;padding:17px 12px;border-top:1px solid var(--line);color:#7796a9;font-size:12px}.side-note strong{color:var(--cyan);display:block;margin-bottom:5px}.main{min-width:0;padding:27px clamp(18px,4vw,60px) 100px}.topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;gap:12px}.topline .eyebrow{font-size:11px;color:#74b1b5;font-weight:900;letter-spacing:.16em;text-transform:uppercase}.version{font-size:11px;color:var(--sub);border:1px solid var(--line);padding:6px 11px;border-radius:99px}.page-title{font-weight:900;font-size:clamp(24px,3.3vw,37px);letter-spacing:-.035em;line-height:1.25;margin:0 0 9px}.lead{color:var(--sub);margin:0 0 24px}.hero{display:grid;grid-template-columns:1fr auto;gap:20px;background:linear-gradient(115deg,#183a4f,#10313e 60%,#0b5253);padding:clamp(22px,4vw,38px);border:1px solid #32767f;border-radius:25px;position:relative;overflow:hidden}.hero:after{content:"";width:250px;height:250px;position:absolute;right:-85px;top:-95px;border:44px solid #ffffff08;border-radius:50%;pointer-events:none}.hero h1{font-size:clamp(26px,3.5vw,41px);line-height:1.22;letter-spacing:-.055em;margin:9px 0 14px;font-weight:900}.hero p{color:#bad7e3;max-width:550px;margin:0 0 23px}.hero-tag{font-size:11px;letter-spacing:.13em;color:#9ef8de;font-weight:900}.hero-big{font-size:92px;font-weight:900;opacity:.07;align-self:center;line-height:1}.btn{border:1px solid var(--line);border-radius:12px;padding:12px 17px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;color:var(--txt);background:var(--panel2);text-decoration:none;transition:transform .12s,border-color .12s}.btn:hover{border-color:var(--cyan);transform:translateY(-1px)}.btn-primary{background:var(--cyan);color:#06232c;border-color:var(--cyan)}.btn-primary:hover{background:#7dece2}.btn-secondary{background:#1a3044}.btn-quiet{border:none;background:transparent;color:var(--sub)}.btn-small{padding:8px 12px;font-size:13px;border-radius:10px}.btn:disabled{opacity:.4;pointer-events:none}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:20px 0 29px}.stat{border:1px solid var(--line);border-radius:15px;background:var(--panel);padding:17px 18px}.stat-value{font-weight:900;font-size:29px;line-height:1.2;letter-spacing:-.03em}.stat-label{font-size:12px;color:var(--sub);margin-top:4px}.labelrow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:20px 0 13px}.labelrow h2{font-size:17px;margin:0;letter-spacing:-.01em}.faint{font-size:12px;color:var(--sub)}.wide-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:14px}.panel{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:22px}.panel h3{font-size:16px;margin:0 0 8px}.panel p{margin:0;color:var(--sub);font-size:13px}.callout{border-left:3px solid var(--amber);background:#e7ad4710;border-radius:0 12px 12px 0;padding:13px 15px;color:#d5dfeb;font-size:12px;margin-top:20px}.featured{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.chip{padding:9px 13px;border:1px solid #325163;background:#142b3e;border-radius:10px;font-size:13px;color:#cae0ed;font-weight:750}.chip:hover{border-color:var(--cyan);color:var(--cyan)}.chip.on{border-color:#41b9b2;background:#184e56;color:#acfff6}.toolbar{display:flex;align-items:center;gap:11px;margin-bottom:16px;flex-wrap:wrap}.field,.search,.select{border:1px solid var(--line);background:#102435;color:var(--txt);padding:12px 13px;border-radius:12px;outline:none;min-width:0}.search{flex:1;min-width:180px}.select{max-width:100%;min-width:140px}.field:focus,.search:focus,.select:focus{border-color:var(--cyan)}.card-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.venue-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;transition:border-color .15s}.venue-card:hover{border-color:#3d8495}.venue-heading{display:flex;justify-content:space-between;align-items:start;gap:10px;margin-bottom:11px}.venue-card h3{margin:0;font-size:17px}.venue-card small{font-size:11px;color:var(--sub)}.eyebadge{font-size:10px;color:#bcd9e5;background:#1e3848;border:1px solid #2f4b5c;border-radius:7px;padding:4px 6px;white-space:nowrap}.eyebadge.warn{color:var(--amber);background:#5a431e33;border-color:#7d603a}.eyebadge.good{color:var(--green);background:#20583f33;border-color:#327256}.datum{display:grid;grid-template-columns:78px 1fr;align-items:start;gap:8px;border-top:1px solid #2740539e;padding-top:9px;margin-top:9px;font-size:13px}.datum .k{color:var(--sub);font-size:12px}.datum .v{font-weight:700}.datum .v.muted{color:#7b92a3;font-weight:400}.venue-actions{display:flex;gap:9px;margin-top:14px;justify-content:space-between}.text-button{background:transparent;border:0;padding:6px 0;color:var(--cyan);font-weight:800}.text-button:hover{text-decoration:underline}.stars{background:none;border:0;color:#577384;font-size:23px;line-height:1}.stars.on{color:var(--amber)}.empty{padding:45px 20px;text-align:center;border:1px dashed #31516a;border-radius:15px;color:var(--sub)}.empty h3{color:var(--txt);margin-bottom:4px}
+.quiz-layout{max-width:775px}.quiz-controls{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:18px}.quiz-mode{background:var(--panel);border:1px solid var(--line);padding:8px;border-radius:14px;display:flex;gap:5px;flex-wrap:wrap}.quiz-mode button{border:0;border-radius:9px;background:transparent;color:var(--sub);font-size:13px;font-weight:750;padding:10px 12px}.quiz-mode button.selected{color:#052630;background:var(--cyan)}.question{border:1px solid #2a5062;border-radius:21px;padding:clamp(20px,4vw,32px);background:linear-gradient(180deg,#142d40,#0f2133);box-shadow:var(--shadow)}.q-top{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--sub);font-size:12px}.q-type{font-size:11px;color:var(--cyan);letter-spacing:.08em;font-weight:900}.q-title{font-size:clamp(28px,4vw,41px);line-height:1.3;margin:25px 0 7px;font-weight:900;letter-spacing:-.04em}.q-sub{margin:0 0 22px;color:#b6d2df}.answers{display:grid;gap:10px;margin-bottom:14px}.answer{border:1px solid #31546b;color:#f4faff;background:#183448;padding:15px 16px;text-align:left;border-radius:12px;font-weight:800;display:flex;gap:13px;align-items:start;width:100%;font-size:15px}.answer .a-index{border:1px solid #4c7285;border-radius:7px;display:grid;place-items:center;min-width:26px;height:26px;font-size:11px;color:#b6d0dc}.answer:hover:not(:disabled){border-color:var(--cyan);background:#21455b}.answer:disabled{opacity:.78;cursor:default}.answer.correct{background:#184c3a;border-color:#55b987;color:var(--green);opacity:1}.answer.incorrect{background:#553140;border-color:#db788c;color:#ffb0bf;opacity:1}.result{border-radius:14px;padding:16px;margin:18px 0 4px;border:1px solid #47677b;background:#11293b}.result.good{background:#123f34;border-color:#3a8568}.result.bad{background:#422a35;border-color:#986071}.result h3{font-size:17px;margin:0 0 5px}.result p{color:#d4e3e8;margin:0;font-size:13px}.result .answer-text{margin-top:6px;font-size:17px;font-weight:900}.quiz-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:18px}.meta-quote{font-size:12px;color:var(--sub)}.progress{height:6px;background:#254255;border-radius:5px;overflow:hidden;margin-top:10px}.progress>span{display:block;background:linear-gradient(90deg,#26a2aa,#92ecca);height:100%;border-radius:5px}.subsection{font-weight:850;font-size:15px;margin:24px 0 10px}.kvs{display:grid;grid-template-columns:1fr 1fr;gap:12px}.big-datum{border:1px solid var(--line);border-radius:13px;background:#14283a;padding:14px}.big-datum .k{color:var(--sub);font-size:12px}.big-datum .v{font-size:17px;font-weight:900;margin-top:5px}.details-note{margin:18px 0 0;background:#142a39;border:1px solid #2c4c60;padding:15px;border-radius:12px;color:#d7e4ec;font-size:13px}.source-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}.source-links a{display:inline-flex;padding:8px 12px;text-decoration:none;border:1px solid #3c6370;border-radius:10px;font-size:12px;font-weight:750}.modal-backdrop{position:fixed;inset:0;background:#000a;display:flex;align-items:center;justify-content:center;z-index:30;padding:18px}.modal{background:var(--panel);border:1px solid #46687b;border-radius:20px;max-width:620px;width:100%;max-height:90dvh;overflow:auto;box-shadow:var(--shadow);padding:clamp(19px,3vw,28px)}.modal-head{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:19px}.modal-head h2{margin:0;font-size:23px}.close{border:0;background:#233d52;border-radius:10px;color:white;width:33px;height:33px;font-size:20px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formlabel{display:block;font-size:12px;color:var(--sub);font-weight:750;margin-bottom:5px}.form-item{min-width:0}.form-item.full{grid-column:1/-1}.form-item input,.form-item textarea,.form-item select{width:100%;border:1px solid var(--line);background:#0d2032;color:var(--txt);border-radius:10px;padding:10px 12px;min-height:43px}.form-item textarea{min-height:83px;resize:vertical}.form-item input:focus,.form-item textarea:focus,.form-item select:focus{border-color:var(--cyan);outline:none}.form-footer{display:flex;justify-content:flex-end;gap:9px;margin-top:21px}.setting-section{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--panel);margin-bottom:15px}.setting-section h2{font-size:17px;margin:0 0 8px}.setting-section p{color:var(--sub);font-size:13px;margin:0 0 15px}.toast{position:fixed;bottom:26px;right:22px;background:#24504c;color:#d2fff4;border:1px solid #46ae9b;padding:13px 20px;border-radius:13px;z-index:80;font-size:13px;font-weight:800;box-shadow:var(--shadow);max-width:300px}.footnote{margin:35px 0 0;color:#6d8c9f;font-size:12px;line-height:1.8}.badge-line{font-size:11px;color:#a7b8c5;margin-top:7px}.mini-info{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:12px;margin-top:10px}.mini-info strong{display:block}.mini-info span{font-size:12px;color:var(--sub)}.mobile-nav{display:none}.session-note{font-size:12px;color:var(--sub);padding:12px 0}.blue{color:var(--cyan)}
+@media(max-width:1050px){.app{grid-template-columns:198px minmax(0,1fr)}.side{padding:25px 13px}.main{padding:23px 22px 94px}.card-list{grid-template-columns:1fr}.hero-big{display:none}}
+@media(max-width:720px){body{font-size:14px}.app{display:block}.side{display:none}.main{padding:18px 15px 107px}.topline{margin-bottom:16px}.hero{display:block;padding:24px 20px}.hero h1{font-size:30px}.stats{grid-template-columns:repeat(2,1fr);gap:9px;margin:13px 0 23px}.stat{padding:13px}.stat-value{font-size:25px}.wide-grid{grid-template-columns:1fr}.card-list{grid-template-columns:1fr}.page-title{font-size:26px}.toolbar{gap:8px}.search{width:100%;flex:0 0 100%}.select{min-width:0;flex:1}.panel{padding:18px}.modal-backdrop{align-items:flex-end;padding:0}.modal{border-radius:21px 21px 0 0;max-height:91dvh}.mobile-nav{display:grid;grid-template-columns:repeat(4,1fr);background:#091827ef;border-top:1px solid #294457;position:fixed;bottom:0;left:0;right:0;z-index:20;padding:6px 8px calc(7px + env(safe-area-inset-bottom));backdrop-filter:blur(18px)}.mobile-nav button{border:0;background:transparent;color:#9aafbf;padding:8px 3px 5px;border-radius:8px;display:grid;place-items:center;gap:1px;font-size:10px;font-weight:800}.mobile-nav button.active{color:var(--cyan);background:#173545}.mobile-nav .symbol{font-size:19px}.toast{bottom:86px;right:14px;left:14px;max-width:none;text-align:center}.formgrid{grid-template-columns:1fr}.kvs{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side"><div class="brand"><div class="brand-symbol">AA</div><div><div class="brand-title">AAマスター</div><div class="brand-sub">AUCTION STUDY</div></div></div>
+<nav class="nav" id="sidebarNav"><button data-nav="home"><span class="symbol">⌂</span>ダッシュボード</button><button data-nav="quiz"><span class="symbol">▣</span>暗記クイズ</button><button data-nav="venues"><span class="symbol">▤</span>会場一覧</button><button data-nav="settings"><span class="symbol">⚙</span>設定・データ管理</button></nav><div class="side-note"><strong>WORK SMARTER.</strong>開催曜日・搬出期限・ワンプラをまとめて暗記。<br>記録はこの端末のブラウザに保存。</div></aside>
+<main class="main"><div class="topline"><div class="eyebrow">LOGISTICS KNOWLEDGE / AA</div><div class="version">BETA · 2026.10</div></div><div id="view"></div><div class="footnote">※ 学習用の参考データ。会場休業・祝日・映像コーナー・サテライト・各サービス・特別開催等で期限が変わります。実際の搬出指示では必ず対象車両の出庫票・最新の会場規約・事務局案内を優先してください。自動更新はありません。</div></main>
+</div>
+<nav class="mobile-nav" id="mobileNav"><button data-nav="home"><span class="symbol">⌂</span>ホーム</button><button data-nav="quiz"><span class="symbol">▣</span>クイズ</button><button data-nav="venues"><span class="symbol">▤</span>会場一覧</button><button data-nav="settings"><span class="symbol">⚙</span>設定</button></nav>
+<div id="modal"></div><div id="toast" aria-live="polite"></div>
+<script>
+'use strict';
+const INITIAL = [
+  {
+    "id": "v000",
+    "name": "TAA近畿",
+    "region": "近畿",
+    "brand": "TAA",
+    "day": 1,
+    "sale": "開催週 土曜日 12:00",
+    "one": "落札通知書発送日を含む4営業日",
+    "note": "ワンプラはセリ終了・会場流札車期限・着金確認により搬出可能タイミングが変わる。",
+    "source": "https://www.araiaa.jp/ainet/help/pdf/taa_kiyaku_2501.pdf",
+    "source2": "https://taacaa.jp/auction_site/pdf_taa/Taa_kiyaku.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v001",
+    "name": "TAA兵庫",
+    "region": "近畿",
+    "brand": "TAA",
+    "day": 5,
+    "sale": "開催翌週 木曜日 12:00",
+    "one": "落札通知書発送日を含む4営業日",
+    "note": "ワンプラ落札が前回流札車の搬出期限を越えた場合、原則次回セリ終了後から搬出。",
+    "source": "https://taacaa.jp/policy/taa/kaijo_kiyaku_145.html",
+    "source2": "https://taacaa.jp/auction_site/pdf_taa/Taa_kiyaku.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v002",
+    "name": "TAA広島",
+    "region": "中国・四国",
+    "brand": "TAA",
+    "day": 1,
+    "sale": "開催週 土曜日 12:00",
+    "one": "落札通知書発送日を含む4営業日",
+    "note": "営業日や再出品タイミング・会場別搬出時間に注意。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "https://taacaa.jp/auction_site/pdf_taa/Taa_kiyaku.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v003",
+    "name": "TAA四国",
+    "region": "中国・四国",
+    "brand": "TAA",
+    "day": 1,
+    "sale": "開催週 土曜日 12:00",
+    "one": "落札通知書発送日を含む4営業日",
+    "note": "営業日や再出品タイミング・会場別搬出時間に注意。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "https://taacaa.jp/auction_site/pdf_taa/Taa_kiyaku.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v004",
+    "name": "TAA九州",
+    "region": "九州",
+    "brand": "TAA",
+    "day": 1,
+    "sale": "開催週 土曜日 17:00",
+    "one": "落札通知書発送日を含む4営業日",
+    "note": "営業日や再出品タイミング・会場別搬出時間に注意。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "https://taacaa.jp/auction_site/pdf_taa/Taa_kiyaku.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v005",
+    "name": "TAA南九州",
+    "region": "九州",
+    "brand": "TAA",
+    "day": 1,
+    "sale": "開催週 土曜日 17:00",
+    "one": "落札通知書発送日を含む4営業日",
+    "note": "営業日や再出品タイミング・会場別搬出時間に注意。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "https://taacaa.jp/auction_site/pdf_taa/Taa_kiyaku.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v006",
+    "name": "TAA関東",
+    "region": "関東",
+    "brand": "TAA",
+    "day": 3,
+    "sale": "開催翌週 火曜日 17:00",
+    "one": "落札通知書発送日を含む4営業日",
+    "note": "営業日や再出品タイミング・会場別搬出時間に注意。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "https://taacaa.jp/auction_site/pdf_taa/Taa_kiyaku.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v007",
+    "name": "TAA中部",
+    "region": "中部",
+    "brand": "TAA",
+    "day": 3,
+    "sale": "開催翌週 火曜日 17:00",
+    "one": "落札通知書発送日を含む4営業日",
+    "note": "営業日や再出品タイミング・会場別搬出時間に注意。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "https://taacaa.jp/auction_site/pdf_taa/Taa_kiyaku.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v008",
+    "name": "TAA東北",
+    "region": "東北・北海道",
+    "brand": "TAA",
+    "day": 3,
+    "sale": "開催翌週 火曜日 17:00",
+    "one": "落札通知書発送日を含む4営業日",
+    "note": "営業日や再出品タイミング・会場別搬出時間に注意。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "https://taacaa.jp/auction_site/pdf_taa/Taa_kiyaku.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v009",
+    "name": "TAA北海道",
+    "region": "東北・北海道",
+    "brand": "TAA",
+    "day": 3,
+    "sale": "開催翌週 火曜日 17:00",
+    "one": "落札通知書発送日を含む4営業日",
+    "note": "営業日や再出品タイミング・会場別搬出時間に注意。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "https://taacaa.jp/auction_site/pdf_taa/Taa_kiyaku.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v010",
+    "name": "TAA横浜",
+    "region": "関東",
+    "brand": "TAA",
+    "day": 5,
+    "sale": "開催翌週 木曜日 17:00",
+    "one": "落札通知書発送日を含む4営業日",
+    "note": "営業日や再出品タイミング・会場別搬出時間に注意。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "https://taacaa.jp/auction_site/pdf_taa/Taa_kiyaku.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v011",
+    "name": "CAA岐阜",
+    "region": "中部",
+    "brand": "CAA",
+    "day": 1,
+    "sale": "開催週 金曜日 12:00",
+    "one": "落札日を含む4日以内",
+    "note": "日曜は搬出不可。最終日が休業日なら翌営業日に延長。",
+    "source": "https://taacaa.jp/policy/caa/kaijo_kiyaku_003.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v012",
+    "name": "CAA中部",
+    "region": "中部",
+    "brand": "CAA",
+    "day": 2,
+    "sale": "開催週 土曜日 12:00",
+    "one": "落札日を含む4日以内",
+    "note": "日曜は搬出不可。最終日が休業日なら翌営業日に延長。",
+    "source": "https://taacaa.jp/policy/caa/kaijo_kiyaku_001.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v013",
+    "name": "CAA東京",
+    "region": "関東",
+    "brand": "CAA",
+    "day": 1,
+    "sale": "開催週 金曜日 12:00",
+    "one": "落札日を含む4日以内",
+    "note": "日曜日は搬出不可。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v014",
+    "name": "CAA東北",
+    "region": "東北・北海道",
+    "brand": "CAA",
+    "day": 1,
+    "sale": "開催週 金曜日 12:00",
+    "one": "落札日を含む4日以内",
+    "note": "日曜日は搬出不可。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v015",
+    "name": "ベイオーク",
+    "region": "近畿",
+    "brand": "ベイオーク",
+    "day": 2,
+    "sale": "開催週 金曜日 17:00",
+    "one": "成約日を含む3日以内（時刻は要確認）",
+    "note": "ワンプラ搬出時刻は提携サイト17:00／会場規約PDF18:00で表記差。ワンプラは確認するまでクイズ対象外。",
+    "source": "https://taacaa.jp/policy/bayauc/kaijo_kiyaku_011.html",
+    "source2": "https://bay-auc.jp/wp-content/uploads/2025/11/kiyaku_all_202507.pdf",
+    "saleStatus": "verified",
+    "oneStatus": "check",
+    "custom": false
+  },
+  {
+    "id": "v016",
+    "name": "NAA大阪",
+    "region": "近畿",
+    "brand": "NAA",
+    "day": 3,
+    "sale": "開催翌週 月曜日 17:00",
+    "one": "落札日を含む4営業日目 17:00",
+    "note": "通常は現車コーナー。映像・四国サテライトは別期限。ワンプラ相当は「Na@速決！」。",
+    "source": "https://www.naa-net.ne.jp/NAA-NET/files/contens/20260806naakaiinkiyakukaitei.pdf",
+    "source2": "https://taacaa.jp/list_hansyutsu.html",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v017",
+    "name": "NAA名古屋",
+    "region": "中部",
+    "brand": "NAA",
+    "day": 3,
+    "sale": "開催翌週 月曜日 17:00",
+    "one": "落札日を含む4営業日目 17:00",
+    "note": "通常は現車コーナー。北陸サテライトは別期限。ワンプラ相当は「Na@速決！」。",
+    "source": "https://www.naa-net.ne.jp/NAA-NET/files/contens/20260806naakaiinkiyakukaitei.pdf",
+    "source2": "https://taacaa.jp/list_hansyutsu.html",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v018",
+    "name": "NAA東京",
+    "region": "関東",
+    "brand": "NAA",
+    "day": 4,
+    "sale": "開催翌週 火曜日 17:00",
+    "one": "落札日を含む4営業日目 17:00",
+    "note": "通常は現車コーナー。映像・サテライトは別期限。ワンプラ相当は「Na@速決！」。",
+    "source": "https://www.naa-net.ne.jp/NAA-NET/files/contens/20260806naakaiinkiyakukaitei.pdf",
+    "source2": "https://taacaa.jp/list_hansyutsu.html",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v019",
+    "name": "MIRIVE大阪",
+    "region": "近畿",
+    "brand": "MIRIVE",
+    "day": 3,
+    "sale": "開催週 土曜日 17:00",
+    "one": "落札日を含む5日以内（時刻は要確認）",
+    "note": "火曜17時以降のワンプラ落札は、次回開催の終了まで搬出不可になる場合あり。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "check",
+    "custom": false
+  },
+  {
+    "id": "v020",
+    "name": "MIRIVE埼玉",
+    "region": "関東",
+    "brand": "MIRIVE",
+    "day": 2,
+    "sale": "開催週 土曜日 12:00",
+    "one": "落札日を含む5日目 18:00",
+    "note": "",
+    "source": "https://taacaa.jp/policy/mirive/kaijo_kiyaku_013.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v021",
+    "name": "MIRIVE愛知",
+    "region": "中部",
+    "brand": "MIRIVE",
+    "day": 4,
+    "sale": "開催翌週 火曜日 15:00",
+    "one": "落札日を含む5日目 18:00",
+    "note": "",
+    "source": "https://taacaa.jp/policy/mirive/kaijo_kiyaku_016.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v022",
+    "name": "LAA岡山",
+    "region": "中国・四国",
+    "brand": "LAA",
+    "day": 4,
+    "sale": "開催翌週 水曜日 12:00",
+    "one": "落札日を含む6日目 18:00",
+    "note": "サテライト神戸西は通常搬出期限が別。木・金のAA開催中は搬出不可。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v023",
+    "name": "LAA四国",
+    "region": "中国・四国",
+    "brand": "LAA",
+    "day": 2,
+    "sale": "開催週 金曜日 17:00",
+    "one": "落札日を含む3日目 17:00（土日を除く）",
+    "note": "水曜午前・土日搬出不可。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v024",
+    "name": "JU東京",
+    "region": "関東",
+    "brand": "JU",
+    "day": 0,
+    "sale": "開催週 木曜日 18:00",
+    "one": "落札日を含む4日以内",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v025",
+    "name": "JU埼玉",
+    "region": "関東",
+    "brand": "JU",
+    "day": 1,
+    "sale": "開催週 金曜日 12:00",
+    "one": "落札日を含む4日以内（日曜を除く）",
+    "note": "AA当日午前は搬出不可。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v026",
+    "name": "JU静岡",
+    "region": "中部",
+    "brand": "JU",
+    "day": 1,
+    "sale": "開催週 土曜日 17:00",
+    "one": "落札日を含む5日以内 17:00",
+    "note": "AA当日午前は搬出不可。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v027",
+    "name": "JU福井",
+    "region": "中部",
+    "brand": "JU",
+    "day": 1,
+    "sale": "開催週 金曜日 17:00",
+    "one": "落札日を含む4日以内 17:00",
+    "note": "日・祝は搬出不可。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v028",
+    "name": "JU三重",
+    "region": "中部",
+    "brand": "JU",
+    "day": 1,
+    "sale": "開催週 金曜日 17:00",
+    "one": "落札日を含む4日以内 17:00",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v029",
+    "name": "JU奈良",
+    "region": "近畿",
+    "brand": "JU",
+    "day": 5,
+    "sale": "開催翌週 火曜日 17:00",
+    "one": "落札日を含む4日以内 17:00",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v030",
+    "name": "JU岐阜",
+    "region": "中部",
+    "brand": "JU",
+    "day": 5,
+    "sale": "開催翌週 火曜日 17:30",
+    "one": "落札日を含む4日以内",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v031",
+    "name": "JU神奈川",
+    "region": "関東",
+    "brand": "JU",
+    "day": 3,
+    "sale": "開催翌週 水曜日 12:00",
+    "one": "落札日を含む7日以内 17:00",
+    "note": "ワンプラは落札翌日から搬出可能。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v032",
+    "name": "JU愛知",
+    "region": "中部",
+    "brand": "JU",
+    "day": 3,
+    "sale": "開催翌週 月曜日 17:00",
+    "one": "落札日を含む4日以内",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v033",
+    "name": "JU山口",
+    "region": "中国・四国",
+    "brand": "JU",
+    "day": 1,
+    "sale": "開催週 金曜日 18:00",
+    "one": "該当AAの翌週 金曜日 18:00",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v034",
+    "name": "JU茨城",
+    "region": "関東",
+    "brand": "JU",
+    "day": 2,
+    "sale": "開催週 土曜日 18:00",
+    "one": "落札日の翌週 土曜日 18:00",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v035",
+    "name": "JU長野",
+    "region": "中部",
+    "brand": "JU",
+    "day": 1,
+    "sale": "開催週 金曜日 17:00",
+    "one": "該当AAの翌週 月曜日 17:00",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v036",
+    "name": "JU富山",
+    "region": "中部",
+    "brand": "JU",
+    "day": 3,
+    "sale": "開催翌週 水曜日 17:00",
+    "one": "落札日を含む5日以内（日祝除く）17:00",
+    "note": "日曜は搬出不可。",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v037",
+    "name": "JU広島",
+    "region": "中国・四国",
+    "brand": "JU",
+    "day": 3,
+    "sale": "開催翌週 月曜日 17:00",
+    "one": "掲載終了日を含む4日以内（日祝除く）",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v038",
+    "name": "JU千葉",
+    "region": "関東",
+    "brand": "JU",
+    "day": 4,
+    "sale": "開催翌週 月曜日 17:00",
+    "one": "落札日を含む4日以内 17:00",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v039",
+    "name": "JU山梨",
+    "region": "中部",
+    "brand": "JU",
+    "day": 5,
+    "sale": "開催翌週 水曜日 17:00",
+    "one": "落札日を含む5日以内 17:00",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v040",
+    "name": "JU山形",
+    "region": "東北・北海道",
+    "brand": "JU",
+    "day": 5,
+    "sale": "開催翌週 水曜日 17:00",
+    "one": "落札日を含む4日以内（日祝除く）",
+    "note": "",
+    "source": "https://taacaa.jp/list_hansyutsu.html",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "verified",
+    "custom": false
+  },
+  {
+    "id": "v041",
+    "name": "ZIP東京",
+    "region": "関東",
+    "brand": "ZIP",
+    "day": 5,
+    "sale": "開催翌週 水曜日 17:00",
+    "one": "",
+    "note": "ワンプライスの搬出可能時間は月～土9～17時。搬出期限は未収録。",
+    "source": "https://zipco.co.jp/zipnet/agreement.action",
+    "source2": "",
+    "saleStatus": "verified",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v042",
+    "name": "ZIP大阪",
+    "region": "近畿",
+    "brand": "ZIP",
+    "day": 3,
+    "sale": "",
+    "one": "",
+    "note": "ワンプライスの搬出可能時間は月～土9～18時。搬出期限は未収録。",
+    "source": "https://zipco.co.jp/zipnet/agreement.action",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v043",
+    "name": "USS横浜",
+    "region": "関東",
+    "brand": "USS",
+    "day": 1,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v044",
+    "name": "USS東京",
+    "region": "関東",
+    "brand": "USS",
+    "day": 3,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v045",
+    "name": "USS大阪",
+    "region": "近畿",
+    "brand": "USS",
+    "day": 4,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v046",
+    "name": "USS神戸",
+    "region": "近畿",
+    "brand": "USS",
+    "day": 2,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v047",
+    "name": "USS名古屋",
+    "region": "中部",
+    "brand": "USS",
+    "day": 4,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v048",
+    "name": "USS札幌",
+    "region": "東北・北海道",
+    "brand": "USS",
+    "day": 2,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v049",
+    "name": "USS東北",
+    "region": "東北・北海道",
+    "brand": "USS",
+    "day": 2,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v050",
+    "name": "USS福岡",
+    "region": "九州",
+    "brand": "USS",
+    "day": 2,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v051",
+    "name": "USS九州",
+    "region": "九州",
+    "brand": "USS",
+    "day": 5,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v052",
+    "name": "USS岡山",
+    "region": "中国・四国",
+    "brand": "USS",
+    "day": 5,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v053",
+    "name": "USS群馬",
+    "region": "関東",
+    "brand": "USS",
+    "day": 5,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v054",
+    "name": "USS静岡",
+    "region": "中部",
+    "brand": "USS",
+    "day": 5,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v055",
+    "name": "USS新潟",
+    "region": "中部",
+    "brand": "USS",
+    "day": 2,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  },
+  {
+    "id": "v056",
+    "name": "USS埼玉",
+    "region": "関東",
+    "brand": "USS",
+    "day": 4,
+    "sale": "",
+    "one": "",
+    "note": "開催曜日のみ確認済み。通常搬出期限は未収録。USSワンクリックと現車セリは別ルール。",
+    "source": "https://docs.asnet.jp/asnet/terms/terms/",
+    "source2": "",
+    "saleStatus": "unknown",
+    "oneStatus": "unknown",
+    "custom": false
+  }
+];
+const STORAGE = 'aa-master-database-v1', STATSKEY='aa-master-progress-v1', FAVKEY='aa-master-favs-v1';
+const DAYS=['月曜日','火曜日','水曜日','木曜日','金曜日','土曜日','日曜日'];
+const TYPES={day:'開催曜日',sale:'セリ落札',one:'ワンプラ落札'};
+const TYPES_Q={day:'毎週何曜日に開催？',sale:'通常セリ落札の搬出期限は？',one:'ワンプラ（即決）落札の搬出期限は？'};
+const $=(s,base=document)=>base.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+function getSaved(key,other){try{let x=JSON.parse(localStorage.getItem(key));return x??other}catch{return other}}
+let venues=getSaved(STORAGE,JSON.parse(JSON.stringify(INITIAL)));
+if(!Array.isArray(venues)||!venues.length)venues=JSON.parse(JSON.stringify(INITIAL));
+let progress=getSaved(STATSKEY,{});if(!progress||Array.isArray(progress)||typeof progress!=='object')progress={};
+let favorites=getSaved(FAVKEY,[]);if(!Array.isArray(favorites))favorites=[];
+let currentView='home', query='', regionFilter='すべて', brandFilter='すべて', listFilter='all';
+let quizType='all',quizRegion='すべて',reviewOnly=false, currentQuestion=null, answered=false, chosen=null, recent=[], session={attempts:0,correct:0};
+function save(){try{localStorage.setItem(STORAGE,JSON.stringify(venues));localStorage.setItem(STATSKEY,JSON.stringify(progress));localStorage.setItem(FAVKEY,JSON.stringify(favorites));}catch{notice('保存できませんでした。ブラウザの容量を確認してな。')}}
+function notice(t){let el=$('#toast');el.innerHTML=`<div class="toast">${esc(t)}</div>`;clearTimeout(notice.timer);notice.timer=setTimeout(()=>el.innerHTML='',3200)}
+function entries(){return venues.flatMap(v=>['day','sale','one'].filter(t=>t==='day'?Number.isInteger(v.day)&&v.day>=0&&v.day<=6:!!v[t]&&v[t+'Status']==='verified').map(t=>({v,t,key:v.id+':'+t,answer:t==='day'?DAYS[v.day]:v[t]})))}
+function getStat(){let arr=Object.values(progress);let a=arr.reduce((n,r)=>n+(r.ok||0)+(r.ng||0),0),c=arr.reduce((n,r)=>n+(r.ok||0),0);return {a,c,pct:a?Math.round(c/a*100):0,wrong:arr.filter(r=>(r.ng||0)>0&&(r.ok||0)<=(r.ng||0)*2).length}}
+function isWeak(k){let p=progress[k];return !!p&&(p.ng||0)>0&&(p.ok||0)<=(p.ng||0)*2}
+function statHTML(){let s=getStat();return `<section class="stats"><div class="stat"><div class="stat-value">${venues.length}</div><div class="stat-label">収録会場</div></div><div class="stat"><div class="stat-value">${s.a}</div><div class="stat-label">累計解答数</div></div><div class="stat"><div class="stat-value">${s.pct}<span style="font-size:15px">%</span></div><div class="stat-label">通算正答率</div></div><div class="stat"><div class="stat-value">${s.wrong}</div><div class="stat-label">復習が必要な問題</div></div></section>`}
+function nav(v){currentView=v;document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===v));render();scrollTo({top:0,behavior:'smooth'})}
+function render(){if(currentView==='home')home();else if(currentView==='quiz')quiz();else if(currentView==='venues')listing();else settings()}
+function home(){let r=venues.filter(x=>['TAA','CAA','NAA','ベイオーク'].includes(x.brand)).slice(0,8);$('#view').innerHTML=`<div class="hero"><div><div class="hero-tag">AA STUDY SYSTEM</div><h1>開催曜日も、搬出期限も。<br>まとめて自分の武器に。</h1><p>全国のAA会場を、セリ落札とワンプラ落札に分けて覚える。確認済みルールだけで出題する、輸送手配のための学習ツール。</p><button class="btn btn-primary" data-nav="quiz">クイズを始める →</button></div><div class="hero-big">AA</div></div>${statHTML()}<div class="labelrow"><h2>学習メニュー</h2><span class="faint">知識を積み上げよう</span></div><div class="wide-grid"><div class="panel"><div style="font-size:24px;margin-bottom:8px">▣</div><h3>毎日ちょっとずつ暗記クイズ</h3><p>開催曜日・セリ落札・ワンプラを切り替えて出題。苦手問題だけの復習もできる。</p><div style="margin-top:18px"><button class="btn btn-primary btn-small" data-nav="quiz">問題を解く →</button></div></div><div class="panel"><div style="font-size:24px;margin-bottom:8px">▤</div><h3>会場ルールの早見表</h3><p>会場名・エリア・AAグループで絞り込み。出典と例外事項も一緒にチェックできる。</p><div style="margin-top:18px"><button class="btn btn-secondary btn-small" data-nav="venues">会場を調べる →</button></div></div></div><div class="labelrow"><h2>まず覚えたい会場</h2><span class="faint">タップすると詳細へ</span></div><div class="featured">${r.map(v=>`<button class="chip" data-detail="${esc(v.id)}">${esc(v.name)} ↗</button>`).join('')}</div><div class="callout"><strong>ワンプラの注意点</strong><br>「落札日を含む◯日」と「◯営業日」は別物。TAAのワンプラやNAAのNa@速決！のように、サービスごとの条件も覚えよう。時刻や条件に情報差がある項目は出題から外しているで。</div>`}
+function random(a){return a[Math.floor(Math.random()*a.length)]}
+function shuffle(a){let x=[...a];for(let i=x.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
+function pool(){return entries().filter(x=>(quizType==='all'||x.t===quizType)&&(quizRegion==='すべて'||quizRegion===x.v.region)&&(!reviewOnly||isWeak(x.key)))}
+function nextQuestion(){let a=pool(),p=a.filter(x=>!recent.includes(x.key));if(!p.length)p=a;if(!p.length){currentQuestion=null;answered=false;return}currentQuestion=random(p);recent.push(currentQuestion.key);if(recent.length>8)recent.shift();answered=false;chosen=null}
+function alternatives(q){let possible=[...new Set(entries().filter(x=>x.t===q.t).map(x=>x.answer))].filter(a=>a!==q.answer);let out=shuffle(possible).slice(0,3);if(q.t==='day'){out=shuffle(DAYS.filter(d=>d!==q.answer)).slice(0,3)}return shuffle([q.answer,...out])}
+let qOptions=[];
+function quiz(){if(!currentQuestion||!pool().some(x=>x.key===currentQuestion.key))nextQuestion();let options=quizType,regionList=['すべて',...new Set(venues.map(x=>x.region))];$('#view').innerHTML=`<h1 class="page-title">暗記クイズ</h1><p class="lead">1問ずつ解いて、開催日と搬出期限を定着させよう。</p><div class="quiz-layout"><div class="quiz-mode">${[['all','すべて'],['day','開催曜日'],['sale','セリ落札'],['one','ワンプラ']].map(([k,l])=>`<button data-quiztype="${k}" class="${options===k?'selected':''}">${l}</button>`).join('')}</div><div class="quiz-controls" style="margin-top:12px"><select class="select" id="quizRegion" aria-label="出題エリア">${regionList.map(r=>`<option value="${esc(r)}" ${r===quizRegion?'selected':''}>${esc(r==='すべて'?'全国すべて':r)}</option>`).join('')}</select><button class="btn btn-small ${reviewOnly?'btn-primary':'btn-secondary'}" id="reviewToggle">${reviewOnly?'✓ ':'↻ '}苦手だけ復習</button><span class="faint" style="align-self:center">出題可能 ${pool().length}問</span></div><div id="questionPlace"></div><div class="session-note">このセッション ${session.attempts}問中 ${session.correct}問正解 ・ 解答履歴は自動保存</div></div>`;drawQuestion()}
+function drawQuestion(){let el=$('#questionPlace');if(!el)return;if(!currentQuestion){el.innerHTML=`<div class="empty"><h3>対象の問題がないで！</h3><p>苦手問題がまだないか、フィルターで絞りすぎているみたい。</p><button class="btn btn-primary" style="margin-top:14px" id="resetQuizFilter">全問題に戻す</button></div>`;return}let q=currentQuestion;if(!answered)qOptions=alternatives(q);let note=q.v.note||'会場の規約で必ず詳細確認を。';let isCorrect=chosen===q.answer;let title=q.t==='day'?'開催曜日':q.t==='sale'?'セリ落札の搬出期限':'ワンプラ落札の搬出期限';el.innerHTML=`<section class="question"><div class="q-top"><span class="q-type">QUESTION / ${esc(title)}</span><span>会場暗記</span></div><h2 class="q-title">${esc(q.v.name)}</h2><p class="q-sub">${esc(TYPES_Q[q.t])}</p><div class="answers">${qOptions.map((a,i)=>`<button class="answer ${answered?(a===q.answer?'correct':a===chosen?'incorrect':''):''}" data-answer="${esc(i)}" ${answered?'disabled':''}><span class="a-index">${String.fromCharCode(65+i)}</span><span>${esc(a)}</span></button>`).join('')}</div>${answered?`<div class="result ${isCorrect?'good':'bad'}" role="status"><h3>${isCorrect?'正解！ よく覚えてるで。':'惜しい！ ここを覚えよう。'}</h3><p>正しい答え</p><div class="answer-text">${esc(q.answer)}</div><p style="margin-top:11px">${esc(note)}</p>${q.v.source?`<div style="margin-top:12px"><a href="${esc(safeUrl(q.v.source))}" target="_blank" rel="noopener noreferrer">参考規約を開く ↗</a></div>`:''}</div>`:''}<div class="quiz-actions"><button class="btn btn-quiet btn-small" data-detail="${esc(q.v.id)}">会場の詳細を見る ↗</button>${answered?'<button class="btn btn-primary" id="nextQuestion">次の問題へ →</button>':'<button class="btn btn-quiet" id="giveup">わからない / 答えを見る</button>'}</div></section>`}
+function answer(i){if(answered||!currentQuestion)return;const a=i===null?null:qOptions[i];if(i!==null&&!a)return;chosen=a;answered=true;const p=progress[currentQuestion.key]||{ok:0,ng:0};const correct=a===currentQuestion.answer;p[correct?'ok':'ng']++;p.last=Date.now();progress[currentQuestion.key]=p;session.attempts++;if(correct)session.correct++;save();drawQuestion();let sn=$('.session-note');if(sn)sn.textContent=`このセッション ${session.attempts}問中 ${session.correct}問正解 ・ 解答履歴は自動保存`}
+function countVenues(list){return list.length+'会場'}
+function venueCard(v){const fav=favorites.includes(v.id),ready=v.sale&&v.one&&v.oneStatus!=='check';return `<article class="venue-card"><div class="venue-heading"><div><h3>${esc(v.name)}</h3><small>${esc(v.region)} ／ ${esc(v.brand)}</small></div><span class="eyebadge ${ready?'good':'warn'}">${ready?'3項目対応':v.oneStatus==='check'?'一部要確認':'一部未収録'}</span></div><div class="datum"><span class="k">開催</span><span class="v">${esc(DAYS[v.day]||'未登録')}</span></div><div class="datum"><span class="k">セリ落札</span><span class="v ${v.sale?'':'muted'}">${esc(v.sale||'未確認')}</span></div><div class="datum"><span class="k">ワンプラ</span><span class="v ${v.one&&v.oneStatus!=='check'?'':'muted'}">${esc(v.one||'未確認')}${v.oneStatus==='check'?' ⚠':''}</span></div><div class="venue-actions"><button class="text-button" data-detail="${esc(v.id)}">規約と注意事項を見る ↗</button><button class="stars ${fav?'on':''}" data-fav="${esc(v.id)}" aria-label="${fav?'お気に入りから削除':'お気に入り登録'}">★</button></div></article>`}
+function listing(){let regions=['すべて',...new Set(venues.map(v=>v.region))],brands=['すべて',...new Set(venues.map(v=>v.brand))],a=venues.filter(v=>(!query||(v.name+' '+v.brand+' '+v.region).toLowerCase().includes(query.toLowerCase()))&&(regionFilter==='すべて'||v.region===regionFilter)&&(brandFilter==='すべて'||v.brand===brandFilter)&&(listFilter!=='fav'||favorites.includes(v.id)));$('#view').innerHTML=`<h1 class="page-title">会場一覧</h1><p class="lead">開催曜日・通常セリ・ワンプラを会場別に確認できるで。</p><div class="toolbar"><input class="search" id="venueSearch" placeholder="会場名で検索（例：TAA、神戸、NAA）" value="${esc(query)}" aria-label="会場検索"><select class="select" id="regionFilter" aria-label="エリア">${regions.map(v=>`<option value="${esc(v)}" ${v===regionFilter?'selected':''}>${esc(v==='すべて'?'全エリア':v)}</option>`).join('')}</select><select class="select" id="brandFilter" aria-label="AAグループ">${brands.map(v=>`<option value="${esc(v)}" ${v===brandFilter?'selected':''}>${esc(v==='すべて'?'全グループ':v)}</option>`).join('')}</select><button class="btn btn-small ${listFilter==='fav'?'btn-primary':'btn-secondary'}" id="filterFav">★ お気に入り</button><button class="btn btn-primary btn-small" id="addVenue">＋ 会場追加</button></div><div class="labelrow"><h2>検索結果 ${a.length}件</h2><span class="faint">会場規約に変更があれば編集可能</span></div><div class="card-list" id="venueResults">${a.length?a.map(venueCard).join(''):`<div class="empty">一致する会場がないで。検索条件を変えてみてな。</div>`}</div>`}
+function safeUrl(x){try{const u=new URL(x);return ['http:','https:'].includes(u.protocol)?u.href:''}catch{return ''}}
+function detail(id){let v=venues.find(x=>x.id===id);if(!v)return;$('#modal').innerHTML=`<div class="modal-backdrop" id="backdrop"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><div class="modal-head"><div><div class="eyebrow" style="font-size:11px;color:var(--sub)">${esc(v.brand)} ／ ${esc(v.region)}</div><h2 id="detailTitle">${esc(v.name)}</h2></div><button class="close" data-close aria-label="閉じる">×</button></div><div class="kvs"><div class="big-datum"><div class="k">毎週の開催曜日</div><div class="v blue">${esc(DAYS[v.day]||'未登録')}</div></div><div class="big-datum"><div class="k">通常セリ落札の搬出期限</div><div class="v">${esc(v.sale||'未確認')}</div></div><div class="big-datum" style="grid-column:1/-1"><div class="k">ワンプラ・即決落札の搬出期限 ${v.oneStatus==='check'?'（時刻等に情報差あり）':''}</div><div class="v">${esc(v.one||'未確認')}</div></div></div><div class="details-note"><strong>注意事項</strong><br>${esc(v.note||'開催休止・年末年始・祝日・ヤード別条件で変更する場合があります。')}</div><div class="source-links">${safeUrl(v.source)?`<a href="${esc(safeUrl(v.source))}" target="_blank" rel="noopener noreferrer">参照資料① ↗</a>`:''}${safeUrl(v.source2)?`<a href="${esc(safeUrl(v.source2))}" target="_blank" rel="noopener noreferrer">参照資料② ↗</a>`:''}</div><p class="badge-line">${v.custom?'ユーザー編集データ':'公開資料をもとにした学習用データ'}。セリ落札とワンプラを混同しないように！</p><div class="form-footer"><button class="btn btn-secondary" data-close>閉じる</button><button class="btn btn-primary" data-edit="${esc(v.id)}">この会場を編集</button></div></section></div>`}
+function edit(id){let v=id?venues.find(x=>x.id===id):null;$('#modal').innerHTML=`<div class="modal-backdrop" id="backdrop"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="editTitle"><div class="modal-head"><h2 id="editTitle">${v?'会場ルールを編集':'会場を新規追加'}</h2><button class="close" data-close aria-label="閉じる">×</button></div><form id="venueForm" data-id="${esc(id||'')}"><div class="formgrid"><label class="form-item"><span class="formlabel">会場名 *</span><input name="name" value="${esc(v?.name||'')}" required maxlength="80"></label><label class="form-item"><span class="formlabel">グループ名</span><input name="brand" value="${esc(v?.brand||'')}" placeholder="例：USS" maxlength="40"></label><label class="form-item"><span class="formlabel">エリア</span><select name="region">${['近畿','関東','中部','中国・四国','九州','東北・北海道','その他'].map(r=>`<option ${r===(v?.region||'近畿')?'selected':''}>${r}</option>`).join('')}</select></label><label class="form-item"><span class="formlabel">開催曜日</span><select name="day">${DAYS.map((r,i)=>`<option value="${i}" ${i===(v?.day??0)?'selected':''}>${r}</option>`).join('')}</select></label><label class="form-item full"><span class="formlabel">セリ落札の搬出期限</span><input name="sale" value="${esc(v?.sale||'')}" placeholder="例：開催翌週 木曜日 12:00"></label><label class="form-item full"><span class="formlabel">ワンプラ落札の搬出期限</span><input name="one" value="${esc(v?.one||'')}" placeholder="例：落札日を含む4営業日"></label><label class="form-item full"><span class="formlabel">特記事項（映像・休日・サテライト・例外など）</span><textarea name="note" placeholder="覚えると便利なポイント">${esc(v?.note||'')}</textarea></label><label class="form-item full"><span class="formlabel">参考規約URL</span><input type="url" name="source" value="${esc(v?.source||'')}" placeholder="https://..."></label><label class="form-item full"><span class="formlabel"><input name="useQuiz" type="checkbox" ${v?.oneStatus==='check'?'':'checked'} style="width:auto;min-height:auto;margin-right:7px">入力した期限をクイズに使う</span><span class="faint">ルールを確認してからオンにしてな。OFFなら期限を表示するだけ。</span></label></div><div class="form-footer">${v&&v.custom?`<button type="button" class="btn" data-remove="${esc(v.id)}">削除</button>`:''}<button type="button" class="btn btn-secondary" data-close>キャンセル</button><button type="submit" class="btn btn-primary">保存する</button></div></form></section></div>`}
+function closeModal(){let m=$('#modal');m.innerHTML=''}
+function settings(){let quizCount=entries().length;$('#view').innerHTML=`<h1 class="page-title">設定・データ管理</h1><p class="lead">会場ルールも学習記録も、このブラウザ内に保存されるで。</p><div class="setting-section"><h2>収録データ</h2><p>${venues.length}会場、合計${quizCount}問のクイズが利用可能。登録情報は自動更新されません。</p><button class="btn btn-primary btn-small" id="addVenue">＋ 会場を追加する</button> <button class="btn btn-secondary btn-small" data-nav="venues">登録データを見る</button></div><div class="setting-section"><h2>データのバックアップ</h2><p>ブラウザを消去したり、別の端末に乗り換えたりすると学習記録が消える可能性があるで。バックアップをJSONで保存しておこう。</p><div class="toolbar"><button class="btn btn-primary btn-small" id="exportData">↓ バックアップ保存</button><label class="btn btn-secondary btn-small" for="importData">↑ バックアップ読み込み</label><input type="file" id="importData" accept=".json,application/json" hidden></div></div><div class="setting-section"><h2>学習記録をリセット</h2><p>会場の登録情報は残して、解答成績だけを最初からやり直せる。</p><button class="btn btn-secondary btn-small" id="clearProgress">解答履歴だけ削除</button></div><div class="setting-section"><h2>会場情報を初期状態に戻す</h2><p>自分で追加・変更した会場ルールがすべて初期状態に戻るで。学習記録はそのまま残る。</p><button class="btn btn-secondary btn-small" id="resetVenues">会場データを復元</button></div><div class="callout"><strong>期限の取り扱い</strong><br>収録内容は各会場の公開規約・TC-webΣの搬出期限表などを基にした学習用要約。日祝・事務局休業・例外コーナーなどは自動計算していないので、出庫判断に直接使わないでな。</div>`}
+function download(name,data){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+function getCheckbox(form,name){return !!form.elements[name]?.checked}
+function submitVenue(form){let fd=new FormData(form),id=form.dataset.id,name=String(fd.get('name')||'').trim();if(!name){notice('会場名を入れてな');return}let old=venues.find(x=>x.id===id);let data={id:old?.id||'custom'+Date.now(),name,region:String(fd.get('region')||'その他'),brand:String(fd.get('brand')||'その他').trim()||'その他',day:Number(fd.get('day')),sale:String(fd.get('sale')||'').trim(),one:String(fd.get('one')||'').trim(),note:String(fd.get('note')||'').trim(),source:safeUrl(fd.get('source')||''),source2:old?.source2||'',custom:true};let useQuiz=getCheckbox(form,'useQuiz');data.saleStatus=data.sale?(useQuiz?'verified':'check'):'unknown';data.oneStatus=data.one?(useQuiz?'verified':'check'):'unknown';if(old)Object.assign(old,data);else venues.push(data);save();closeModal();notice('会場情報を保存したで');currentQuestion=null;render()}
+function validatedVenue(v){return v&&typeof v.id==='string'&&typeof v.name==='string'&&typeof v.region==='string'&&typeof v.brand==='string'&&Number.isInteger(v.day)&&v.day>=0&&v.day<7&&['sale','one'].every(k=>!v[k]||typeof v[k]==='string')}
+document.addEventListener('click',e=>{let b=e.target.closest('button, [data-close]');if(!b)return;if(b.dataset.nav){nav(b.dataset.nav);return}if(b.dataset.detail){detail(b.dataset.detail);return}if(b.dataset.close!==undefined){closeModal();return}if(b.id==='backdrop'&&e.target===b){closeModal();return}if(b.dataset.edit){edit(b.dataset.edit);return}if(b.dataset.fav){let id=b.dataset.fav;favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];save();listing();return}if(b.dataset.quiztype){quizType=b.dataset.quiztype;currentQuestion=null;quiz();return}if(b.dataset.answer!==undefined){answer(Number(b.dataset.answer));return}if(b.id==='nextQuestion'){nextQuestion();quiz();return}if(b.id==='giveup'){answer(null);return}if(b.id==='reviewToggle'){reviewOnly=!reviewOnly;currentQuestion=null;quiz();return}if(b.id==='resetQuizFilter'){quizType='all';reviewOnly=false;quizRegion='すべて';currentQuestion=null;quiz();return}if(b.id==='filterFav'){listFilter=listFilter==='fav'?'all':'fav';listing();return}if(b.id==='addVenue'){edit(null);return}if(b.id==='exportData'){download('aa-master-backup.json',{app:'AAマスター',version:1,exportedAt:new Date().toISOString(),venues,progress,favorites});notice('バックアップを保存したで');return}if(b.id==='clearProgress'){if(confirm('解答履歴をすべて消去する？')){progress={};session={attempts:0,correct:0};save();render();notice('解答履歴を消去したで')}return}if(b.id==='resetVenues'){if(confirm('会場情報を初期状態に戻す？ 自分で編集した内容は失われます。')){venues=JSON.parse(JSON.stringify(INITIAL));save();render();notice('初期データに戻したで')}return}if(b.dataset.remove){if(confirm('この会場を削除する？')){venues=venues.filter(x=>x.id!==b.dataset.remove);save();closeModal();render();notice('削除したで')}return}});
+document.addEventListener('submit',e=>{if(e.target.id==='venueForm'){e.preventDefault();submitVenue(e.target)}});
+document.addEventListener('input',e=>{if(e.target.id==='venueSearch'){query=e.target.value;let a=venues.filter(v=>(!query||(v.name+' '+v.brand+' '+v.region).toLowerCase().includes(query.toLowerCase()))&&(regionFilter==='すべて'||v.region===regionFilter)&&(brandFilter==='すべて'||v.brand===brandFilter)&&(listFilter!=='fav'||favorites.includes(v.id)));$('#venueResults').innerHTML=a.length?a.map(venueCard).join(''):`<div class="empty">一致する会場がないで。</div>`;$('.labelrow h2').textContent='検索結果 '+a.length+'件'}});
+document.addEventListener('change',async e=>{let x=e.target;if(x.id==='quizRegion'){quizRegion=x.value;currentQuestion=null;quiz();return}if(x.id==='regionFilter'){regionFilter=x.value;listing();return}if(x.id==='brandFilter'){brandFilter=x.value;listing();return}if(x.id==='importData'){let file=x.files[0];if(!file)return;try{let data=JSON.parse(await file.text());if(!Array.isArray(data.venues)||!data.venues.length||data.venues.length>600||!data.venues.every(validatedVenue))throw Error('形式');if(!confirm(`${data.venues.length}会場分のバックアップを読み込む？ 現在のデータと成績は上書きされるで。`))return;venues=data.venues.map(v=>({...v,source:safeUrl(v.source||''),source2:safeUrl(v.source2||'')}));progress={};if(data.progress&&typeof data.progress==='object'&&!Array.isArray(data.progress)){for(const [k,v] of Object.entries(data.progress)){if(typeof k==='string'&&k.length<100&&v&&typeof v==='object'){progress[k]={ok:Math.max(0,Math.min(100000,Number(v.ok)||0)),ng:Math.max(0,Math.min(100000,Number(v.ng)||0))}}}}favorites=Array.isArray(data.favorites)?data.favorites:[];save();currentQuestion=null;nav('home');notice('バックアップを復元したで')}catch{notice('読み込めないJSONファイルやで。形式を確認してな')}finally{x.value=''}return}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#modal').innerHTML)closeModal();if(currentView==='quiz'&&!$('#modal').innerHTML){if(!answered&&['1','2','3','4'].includes(e.key))answer(Number(e.key)-1);else if(answered&&e.key==='Enter'){nextQuestion();quiz()}}});
+document.addEventListener('click',e=>{if(e.target.id==='backdrop')closeModal()});
+nav('home');
+</script>
+</body></html>
